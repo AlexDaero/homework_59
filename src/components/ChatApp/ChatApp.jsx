@@ -6,7 +6,6 @@ const ChatApp = () => {
     const [dataPost, setDataPost] = useState({ message: '', author: '' })
     const [dataGet, setDataGet] = useState([])
     const [dateTime, setDateTime] = useState('')
-    let chatTimer
 
     const handleChange = (value, type) => {
         const copyState = { ...dataPost }
@@ -19,10 +18,15 @@ const ChatApp = () => {
     }
 
     useEffect(() => {
+        let chatInterval
         if (dateTime !== '') {
-            chatTimer = setInterval(() => {
+            chatInterval = setInterval(() => {
+                console.log('interval')
                 getMessage()
             }, 3000)
+        }
+        return () => {
+            clearInterval(chatInterval)
         }
     }, [dateTime])
 
