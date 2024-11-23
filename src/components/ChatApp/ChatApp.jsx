@@ -53,33 +53,40 @@ const ChatApp = () => {
 
 
     return (
-        <div className="chat_menu">
-            <input
-                type="text"
-                value={dataPost.message}
-                onChange={(e) => handleChange(e.target.value, 'message')}
-                placeholder="Введите сообщение"
-            />
-            <input
-                type="text"
-                value={dataPost.author}
-                onChange={(e) => handleChange(e.target.value, 'author')}
-                placeholder="Введите автора"
-            />
-            <div className="chat_menu_btns">
-                <button onClick={sendMessage}>send</button>
-                <button onClick={getMessage}>get</button>
-            </div>
-            <div>
-                <p>Чат:</p>
+        <div className="chat">
+            <div className="chat_screen">
+                <h3 className="chat_screen_title">Чат:</h3>
                 {dataGet.map((item, index) => {
                     return (
-                        <div key={`${item.author}_${index}`}>
-                            <p>Сообщение - {item.message}</p>
-                            <p>Автор - {item.author}</p>
+                        <div className="chat_screen_message" key={`${item.author}_${index}`}>
+                            <p className="chat_screen_message_text">{item.message}</p>
+                            <p className="chat_screen_message_author">{item.author}</p>
+
                         </div>
                     )
                 })}
+            </div>
+            <div className="chat_menu">
+                <input
+                    className="chat_menu_input"
+                    type="text"
+                    value={dataPost.message}
+                    onChange={(e) => handleChange(e.target.value, 'message')}
+                    placeholder="Введите сообщение"
+                />
+                <input
+                    className="chat_menu_input"
+                    type="text"
+                    value={dataPost.author}
+                    onChange={(e) => handleChange(e.target.value, 'author')}
+                    placeholder="Ваше имя"
+                />
+                <button
+                    className="chat_menu_btn"
+                    onClick={sendMessage}
+                >
+                    Отправить
+                </button>
             </div>
         </div>
     )
