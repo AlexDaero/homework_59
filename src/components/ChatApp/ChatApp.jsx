@@ -31,12 +31,16 @@ const ChatApp = () => {
     }, [dateTime])
 
     const sendMessage = async () => {
-        setDateTime(new Date().toISOString())
-        axios
-            .post('http://localhost:8000/messages', dataPost)
-            .catch((error) => {
-                console.log(error)
-            })
+        if (dataPost.message.length > 1 && isNaN(dataPost.author)) {
+            setDateTime(new Date().toISOString())
+            axios
+                .post('http://localhost:8000/messages', dataPost)
+                .catch((error) => {
+                    console.log(error)
+                })
+        } else {
+            alert('Некорректный ввод!')
+        }
     }
 
     const getMessage = async () => {
