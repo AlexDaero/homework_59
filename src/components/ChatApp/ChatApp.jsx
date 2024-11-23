@@ -18,6 +18,35 @@ const ChatApp = () => {
         setDataPost(copyState)
     }
 
+    useEffect(() => {
+        if (dateTime !== '') {
+            chatTimer = setInterval(() => {
+                getMessage()
+            }, 3000)
+        }
+    }, [dateTime])
+
+    const sendMessage = async () => {
+        setDateTime(new Date().toISOString())
+        axios
+            .post('http://localhost:8000/messages', dataPost)
+            .catch((error) => {
+                console.log(error)
+            })
+    }
+
+    const getMessage = async () => {
+        console.log(`http://localhost:8000/messages?${dateTime}`)
+        axios
+            .get(`http://localhost:8000/messages?datetime=${dateTime}`)
+            .then((response) => {
+                setDataGet(response.data)
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    }
+
 
     return (
         <div className="chat_menu">
