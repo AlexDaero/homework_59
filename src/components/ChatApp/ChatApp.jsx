@@ -50,6 +50,22 @@ const ChatApp = () => {
 
     return (
         <div className="chat_menu">
+            <input
+                type="text"
+                value={dataPost.message}
+                onChange={(e) => handleChange(e.target.value, 'message')}
+                placeholder="Введите сообщение"
+            />
+            <input
+                type="text"
+                value={dataPost.author}
+                onChange={(e) => handleChange(e.target.value, 'author')}
+                placeholder="Введите автора"
+            />
+            <div className="chat_menu_btns">
+                <button onClick={sendMessage}>send</button>
+                <button onClick={getMessage}>get</button>
+            </div>
             <div>
                 <p>Чат:</p>
                 {dataGet.map((item, index) => {
