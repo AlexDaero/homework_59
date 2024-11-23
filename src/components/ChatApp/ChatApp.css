@@ -1,0 +1,12 @@
+.chat_menu{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+.chat_menu_btns{
+    display: flex;
+    gap: 15px;
+}
