@@ -8,6 +8,17 @@ const ChatApp = () => {
     const [dateTime, setDateTime] = useState('')
     let chatTimer
 
+    const handleChange = (value, type) => {
+        const copyState = { ...dataPost }
+        if (type === 'message') {
+            copyState.message = value
+        } else {
+            copyState.author = value
+        }
+        setDataPost(copyState)
+    }
+
+
     return (
         <div className="chat_menu">
             <div>
