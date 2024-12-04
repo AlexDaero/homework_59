@@ -44,7 +44,6 @@ const ChatApp = () => {
     }
 
     const getMessage = async () => {
-        console.log(`http://localhost:8000/messages?${dateTime}`)
         axios
             .get(`http://localhost:8000/messages?datetime=${dateTime}`)
             .then((response) => {
